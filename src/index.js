@@ -1,6 +1,6 @@
 import configureStore from "./store/configureStore";
 import * as actions from "./store/bugs";
-
+import { projectAdded } from "./store/projects";
 const store = configureStore();
 /* 
   subscribe() method returns a function to unsubscribe
@@ -8,7 +8,7 @@ const store = configureStore();
 
 store.subscribe(() => {
   // Whenever store gets updated , below console.log would be triggered
-  console.log("Store changed !!", store.getState());
+  console.log("Store Changed", store.getState());
 });
 
 /* Using actionCreators , we need not write the same code when the same action
@@ -19,6 +19,8 @@ store.dispatch(actions.bugAdded({ description: "Bug 1" }));
 store.dispatch(actions.bugAdded({ description: "Bug 2" }));
 store.dispatch(actions.bugAdded({ description: "Bug 3" }));
 store.dispatch(actions.bugResolved({ id: 2 }));
+store.dispatch(projectAdded({ name: "Project 1" }));
+store.dispatch(projectAdded({ name: "Project 2" }));
 // store.dispatch(actions.bugRemoved({ id: 2 }));
 
 console.log("Final State", store.getState());
