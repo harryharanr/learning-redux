@@ -1,6 +1,6 @@
 import store from "./store";
 import * as actions from "./actionTypes";
-import { bugAdded, bugRemoved } from "./actionCreators";
+import { bugAdded, bugRemoved, bugResolved } from "./actionCreators";
 
 /* 
   subscribe() method returns a function to unsubscribe
@@ -16,6 +16,7 @@ store.subscribe(() => {
   parameter(s) */
 
 store.dispatch(bugAdded("Bug 1"));
+store.dispatch(bugResolved(1));
 store.dispatch(bugRemoved(1));
 
-console.log(store.getState());
+console.log("Final State", store.getState());
