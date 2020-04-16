@@ -15,10 +15,10 @@ store.subscribe(() => {
   is used somewhere else . we can simple call the action creator function and pass the necessary 
   parameter(s) */
 
-store.dispatch(actions.bugAdded("Bug 1"));
-store.dispatch(actions.bugAdded("Bug 2"));
-store.dispatch(actions.bugAdded("Bug 3"));
-store.dispatch(actions.bugResolved(1));
-store.dispatch(actions.bugRemoved(1));
+store.dispatch(actions.bugAdded({ description: "Bug 1" }));
+store.dispatch(actions.bugAdded({ description: "Bug 2" }));
+store.dispatch(actions.bugAdded({ description: "Bug 3" }));
+store.dispatch(actions.bugResolved({ id: 1 }));
+// store.dispatch(actions.bugRemoved({ id: 2 }));
 
 console.log("Final State", store.getState());
