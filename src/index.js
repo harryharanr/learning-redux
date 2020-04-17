@@ -39,3 +39,12 @@ console.log("unResolvedBugs", unresolvedBugs); // will return true
 
 const bugs = getBugsByUser(1)(store.getState());
 console.log("bugs by userId 1", bugs);
+
+// dispatch a function
+
+// We can give the store the ability to dispatch functions by writing middleware functions
+store.dispatch(() => {
+  // Here we can call an API end point
+  // When the promise is resolved , we can dispatch an action with the data returned from the promise
+  // When the promise is rejected , we can call another action that would indicate some error
+});
