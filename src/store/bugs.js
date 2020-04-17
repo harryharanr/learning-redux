@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-
+import { createSelector } from "reselect";
 let lastId = 0;
 
 const slice = createSlice({
@@ -28,7 +28,12 @@ export default slice.reducer;
 // Selector
 
 /*
-  A selector is a function thaht takes a state as an argument and returns a computed state
+  A selector is a function thaht takes a state as an argument and returns a computed state.
+
+  Using reselect , if the list of bugs is not changed , this logic in the below function will not 
+    be executed again . This selector will return the result from the cache 
 */
-export const getUnresolvedBugs = (state) =>
-  state.entities.bugs.filter((bug) => !bug.resolved);
+export const getUnresolvedBugs = createSelector(
+  (state) => state.entities.bugs,
+  (bugs) => bugs.filter((bug) => !bug.resolved)
+);

@@ -26,4 +26,6 @@ store.dispatch(projectAdded({ name: "Project 2" }));
 console.log("Final State", store.getState());
 
 const unresolvedBugs = getUnresolvedBugs(store.getState());
-console.log("unResolvedBugs", unresolvedBugs);
+const x = getUnresolvedBugs(store.getState());
+const y = getUnresolvedBugs(store.getState());
+console.log("unResolvedBugs", x === y); // will return true
