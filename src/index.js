@@ -49,3 +49,8 @@ store.dispatch((dispatch, getState) => {
   dispatch({ type: "bugsReceived", bugs: [1, 2, 3] });
   // When the promise is rejected , we can call another action that would indicate some error
 });
+
+store.dispatch({
+  type: "error",
+  payload: { message: "An error occured." },
+});
