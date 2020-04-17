@@ -1,17 +1,29 @@
-/*
-  1. So far , we've built two slices 
-      i)  bugs
-      ii) projects
-      Each of these slices exposes a reducer function
-      
-  2. Using combineReducers() function , we can add multiple slices to the store
-     This function combines all the reducers to one reducer and pass it to the store
+/* 
+  1. In this file , we can have root level reducers like 
+      i)   entities
+      ii)  auth
+      iii) ui
+      .
+      .
+      .
+      etc .,
+
+  2. In redux , multiple reducers can handle the same action 
 */
+
 import { combineReducers } from "redux";
-import bugsReducer from "./bugs";
-import projectsReducer from "./projects";
+import entitiesReducer from "./entities";
 
 export default combineReducers({
-  bugs: bugsReducer,
-  projects: projectsReducer,
+  entities: entitiesReducer,
 });
+
+/* 
+  The current structure looks like below 
+  {
+    entities: {
+      bugs: [],
+      projects: []
+    }
+  }
+*/
