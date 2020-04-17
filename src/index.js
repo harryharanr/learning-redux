@@ -43,8 +43,9 @@ console.log("bugs by userId 1", bugs);
 // dispatch a function
 
 // We can give the store the ability to dispatch functions by writing middleware functions
-store.dispatch(() => {
+store.dispatch((dispatch, getState) => {
   // Here we can call an API end point
   // When the promise is resolved , we can dispatch an action with the data returned from the promise
+  dispatch({ type: "bugsReceived", bugs: [1, 2, 3] });
   // When the promise is rejected , we can call another action that would indicate some error
 });
