@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { createSelector } from "reselect";
+import { apiCallBegan } from "./api";
+
 let lastId = 0;
 
 const slice = createSlice({
@@ -11,6 +13,9 @@ const slice = createSlice({
   },
   reducers: {
     // it maps actions to action handlers
+    bugsReceived: (bugs, action) => {
+      bugs.list = action.payload;
+    },
     bugAdded: (bugs, action) => {
       bugs.list.push({
         id: ++lastId,
@@ -32,8 +37,22 @@ const slice = createSlice({
   },
 });
 
-export const { bugAdded, bugResolved, bugAssignedToUser } = slice.actions;
+export const {
+  bugAdded,
+  bugResolved,
+  bugAssignedToUser,
+  bugsReceived,
+} = slice.actions;
 export default slice.reducer;
+
+// Actions creators
+const url = "/bugs";
+
+export const loadBugs = () =>
+  apiCallBegan({
+    url,
+    onSuccess: bugsReceived.type,
+  });
 
 // Selector
 
