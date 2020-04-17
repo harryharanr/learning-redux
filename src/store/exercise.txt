@@ -1,3 +1,0 @@
-Add the ability to 
-- assign a bug to a team member
-- get thhe list of bugs assigned to a team member
